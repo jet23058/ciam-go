@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "073d07e1-82fc-4853-a5fb-81cf9239d015",
+		"name": "CIAM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"{{username}}\",\n    \"user\": {\n        \"username\": \"{{username}}\",\n        \"password\": \"{{password}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/register",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirmation code api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"{{username}}\",\n    \"confirmation_code\": \"{{confirmation_code}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/confirmation-code",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"confirmation-code"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account\": \"{{username}}\",\n    \"password\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/login",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forget password api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"{{username}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/forget-password",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"forget-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm forget password api",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"password\", pm.environment.get(\"new_password\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"confirmation_code\": \"{{confirm_forget_password_code}}\",\n    \"user\": {\n        \"username\": \"{{username}}\",\n        \"password\": \"{{new_password}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/confirm-forget-password",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"confirm-forget-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "trans access code api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"access_code\": \"{{access_code}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/trans-access-code",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"trans-access-code"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

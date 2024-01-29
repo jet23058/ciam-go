@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>會員登入 │ TVBS會員中心</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://cc.tvbs.com.tw/member/images/favicon.ico"
+    />
+  </head>
+  <body class="min-h-screen bg-[#f5f5f5]">
+    <div>
+      <header class="bg-white py-2 pl-3 pr-3 shadow">
+        <div class="mx-auto flex justify-between md:w-auto md:max-w-[1150px]">
+          <div>
+            <img
+              src="https://cc.tvbs.com.tw/member/images/tvbs_memberlogo_blue.svg"
+              alt="logo"
+              width="182"
+              height="45"
+            />
+          </div>
+          <div class="flex items-center gap-x-2">
+            <img
+              src="https://cc.tvbs.com.tw/member/images/close.svg"
+              alt="go back to the origin website"
+              width="20"
+              height="20"
+            />
+            <span class="hidden font-bold text-[#7a7a7a] md:inline-block">
+              回到原網站
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <div
+        class="mx-auto my-12 w-[350px] rounded bg-white py-7 px-2 text-center shadow"
+      >
+        <div>
+          <h1 class="text-2xl font-bold">會員登入</h1>
+          <div class="mt-4 flex flex-col gap-y-2 px-10">
+            <button
+              class="flex h-[46px] items-center justify-center gap-x-2 rounded bg-[#4267b2] p-2 font-bold text-white shadow"
+            >
+              <img
+                width="14"
+                height="24"
+                src="https://cc.tvbs.com.tw/member/images/fbbtn.svg"
+                alt="log in with Facebook"
+              />
+              <span>Facebook 登入</span>
+            </button>
+            <button
+              class="flex h-[46px] items-center justify-center gap-x-2 rounded border border-[#ddd] bg-white p-2 font-bold text-[#888] shadow"
+            >
+              <img
+                width="16"
+                height="16"
+                src="https://cc.tvbs.com.tw/member/images/gbtn.png"
+                alt="log in with Google"
+              />
+              <span class="tracking-[2px]">Google 登入</span>
+            </button>
+            <button
+              class="flex items-center justify-center rounded bg-black shadow"
+            >
+              <img
+                width="210"
+                height="46"
+                src="https://cc.tvbs.com.tw/member/images/applebtn.svg"
+                alt="apple id login"
+              />
+            </button>
+          </div>
+
+          <div
+            class="border-b[#dcdcdc] relative mx-auto my-7 h-[1px] w-[calc(80%-80px)] border-b"
+          >
+            <div class="absolute -top-4 w-full">
+              <div
+                class="mx-auto h-7 w-7 rounded-full bg-white p-1 leading-5 shadow-[0px_1px_5px_rgb(0,0,0,0.5)]"
+              >
+                或
+              </div>
+            </div>
+          </div>
+
+          <form>
+            <div class="flex flex-col gap-y-4 px-10">
+              <label>
+                <input
+                  value=""
+                  type="text"
+                  style="background-size: 15px"
+                  class="w-full rounded border border-[#dcdcdc] bg-[#f9f9f9] bg-[url('https://cc.tvbs.com.tw/member/images/peo.svg')] bg-[8px_center] bg-no-repeat py-[9px] pr-[10px] pl-[30px]"
+                  placeholder="請輸入註冊 Email"
+                />
+              </label>
+              <label>
+                <input
+                  type="password"
+                  style="background-size: 15px"
+                  class="w-full rounded border border-[#dcdcdc] bg-[#f9f9f9] bg-[url('https://cc.tvbs.com.tw/member/images/lock.svg')] bg-[8px_center] bg-no-repeat py-[9px] pr-[10px] pl-[30px]"
+                  placeholder="請輸入密碼"
+                />
+              </label>
+              <div class="text-right underline">
+                <a
+                  class="text-[14px]"
+                  href="https://member-st.tvbs.com.tw/index/forget_pass"
+                >
+                  忘記密碼
+                </a>
+              </div>
+            </div>
+            <button class="mt-6 rounded-full bg-[#00acee] py-1 px-5 text-white hover:bg-red-500">
+              登入
+            </button>
+          </form>
+          <div class="mt-2">
+            <span>還不是TVBS會員? </span>
+            <a
+              class="text-[#3659a5] underline hover:text-red-500 hover:no-underline"
+              href="https://member-st.tvbs.com.tw/index/sign_up?back_url=http://localhost:3000"
+            >
+              註冊新會員
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <footer
+        class="fixed bottom-0 w-full border-t border-t-[#dcdcdc] bg-[#f5f5f5] p-1 text-center"
+      >
+        <small class="text-[#7f7f7f]">
+          聯利媒體股份有限公司
+          <br class="block sm:hidden" />© TVBS Media Inc. All Rights Reserved.
+        </small>
+      </footer>
+    </div>
+  </body>
+</html>

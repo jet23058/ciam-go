@@ -1,0 +1,238 @@
+definitions:
+  facades.ResponseSuccess:
+    properties:
+      data:
+        example: success
+        type: string
+    type: object
+  requests_atuh.AuthLogin:
+    properties:
+      account:
+        example: test@gmail.com
+        maxLength: 100
+        minLength: 3
+        type: string
+      password:
+        example: testPassword
+        maxLength: 100
+        minLength: 3
+        type: string
+    type: object
+  requests_atuh.ConfirmForgotPassword:
+    properties:
+      confirmation_code:
+        example: "123456"
+        type: string
+      user:
+        $ref: '#/definitions/requests_atuh.User'
+    required:
+    - confirmation_code
+    - user
+    type: object
+  requests_atuh.ConfirmationCode:
+    properties:
+      confirmation_code:
+        example: "123456"
+        type: string
+      username:
+        example: test@gmail.com
+        type: string
+    type: object
+  requests_atuh.ForgotPassword:
+    properties:
+      username:
+        example: test@gmail.com
+        type: string
+    required:
+    - username
+    type: object
+  requests_atuh.TransAccessCode:
+    properties:
+      access_code:
+        example: abcde-fgh-ijk-lmn
+        type: string
+    type: object
+  requests_atuh.User:
+    properties:
+      password:
+        description: |-
+          Password is the password decided by the user
+          at signup time. This field is required and no signup
+          can work without this.
+          To create a secure password, contraints on this field are
+          it must contain an uppercase and lowercase letter,
+          a special symbol and a number.
+        example: testPassword
+        type: string
+      username:
+        description: |-
+          Username is the username decided by the user
+          at signup time. This field is not required but it could
+          be useful to have
+        example: test@gmail.com
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  requests_atuh.UserRegister:
+    properties:
+      email:
+        example: test@gmail.com
+        type: string
+      user:
+        $ref: '#/definitions/requests_atuh.User'
+    required:
+    - email
+    - user
+    type: object
+  responses.AuthenticationResult:
+    properties:
+      accessToken:
+        example: eyJxxxxxxx
+        type: string
+      expiresIn:
+        example: 3600
+        type: integer
+      idToken:
+        example: eyJxxxxxxx
+        type: string
+      newDeviceMetadata:
+        type: string
+      refreshToken:
+        example: eyJxxxxxxx
+        type: string
+      tokenType:
+        example: bearer
+        type: string
+    type: object
+  responses.ResponseLogin:
+    properties:
+      authenticationResult:
+        $ref: '#/definitions/responses.AuthenticationResult'
+      challengeName:
+        type: string
+      session:
+        type: string
+    type: object
+host: localhost:8008
+info:
+  contact:
+    name: nathan.lu
+    url: https://tedmax100.github.io/
+  description: Gin swagger
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Gin swagger
+  version: "1.0"
+paths:
+  /confirm-forget-password:
+    post:
+      parameters:
+      - description: paramters
+        in: body
+        name: '{array}'
+        schema:
+          $ref: '#/definitions/requests_atuh.ConfirmForgotPassword'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功回傳值
+          schema:
+            $ref: '#/definitions/facades.ResponseSuccess'
+      summary: 忘記密碼認證碼 API
+      tags:
+      - Auth
+  /confirmation-code:
+    post:
+      parameters:
+      - description: paramters
+        in: body
+        name: '{array}'
+        schema:
+          $ref: '#/definitions/requests_atuh.ConfirmationCode'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功回傳值
+          schema:
+            $ref: '#/definitions/facades.ResponseSuccess'
+      summary: 註冊認證碼 API
+      tags:
+      - Auth
+  /forget-password:
+    post:
+      parameters:
+      - description: paramters
+        in: body
+        name: '{array}'
+        schema:
+          $ref: '#/definitions/requests_atuh.ForgotPassword'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功回傳值
+          schema:
+            $ref: '#/definitions/facades.ResponseSuccess'
+      summary: 忘記密碼 API
+      tags:
+      - Auth
+  /login:
+    post:
+      parameters:
+      - description: paramters
+        in: body
+        name: '{array}'
+        schema:
+          $ref: '#/definitions/requests_atuh.AuthLogin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功回傳值
+          schema:
+            $ref: '#/definitions/responses.ResponseLogin'
+      summary: 登入 API
+      tags:
+      - Auth
+  /register:
+    post:
+      parameters:
+      - description: paramters
+        in: body
+        name: '{array}'
+        schema:
+          $ref: '#/definitions/requests_atuh.UserRegister'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功回傳值
+          schema:
+            $ref: '#/definitions/facades.ResponseSuccess'
+      summary: 註冊 API
+      tags:
+      - Auth
+  /trans-access-code:
+    post:
+      parameters:
+      - description: paramters
+        in: body
+        name: '{array}'
+        schema:
+          $ref: '#/definitions/requests_atuh.TransAccessCode'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功回傳值
+          schema:
+            $ref: '#/definitions/facades.ResponseSuccess'
+      summary: Access Code 轉換為 Access Token API
+      tags:
+      - Auth
+swagger: "2.0"
